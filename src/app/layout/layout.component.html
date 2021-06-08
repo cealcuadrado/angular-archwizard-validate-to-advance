@@ -1,0 +1,53 @@
+<aw-wizard>
+  <aw-wizard-step stepTitle="Title of step 1">
+    <div>
+      <form [formGroup]="nameForm" (ngSubmit)="nameSubmit()" novalidate>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="name" class="form-control" formControlName="name"/>
+          <div *ngIf="nameControl.errors">
+            <div *ngIf="nameControl.touched && nameControl.errors.required" class="invalid-feedback">
+              <i class="fas fa-times fa-fw"></i> Name required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit" [disabled]="nameForm.invalid">
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- La idea es que este botón se sustituye por el botón de submit del formulario -->
+    <!--
+    <button type="button" class="btn btn-primary" awNextStep>
+      Next Step
+    </button>
+    -->
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Title of step 2">
+    <div>
+      <form [formGroup] (ngSubmit)="emailSubmit()" novalidate>
+
+      </form>
+    </div>
+    <button type="button" class="btn btn-primary" awPreviousStep>
+      Go to previous step
+    </button>
+    <button type="button" class="btn btn-primary" awNextStep>
+      Go to next step
+    </button>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Title of step 3">
+    <div>
+      Content of Step 3
+    </div>
+    <button type="button" class="btn btn-primary" awPreviousStep>
+      Previous Step
+    </button>
+    <button type="button" class="btn btn-primary" (click)="finishFunction()">
+      Finish
+    </button>
+  </aw-wizard-step>
+</aw-wizard>
